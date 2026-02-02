@@ -20,7 +20,8 @@ import json
 import os
 import gi
 import importlib.resources as res
-from .config import SWITCH_ITEMS, DEFAULT_CONFIG
+# from .config import SWITCH_ITEMS, DEFAULT_CONFIG
+from .config import DEFAULT_CONFIG
 from importlib.metadata import version, PackageNotFoundError
 
 for lib, ver in {
@@ -77,18 +78,13 @@ class StyleScheme:
 class SwitchMenu:
     @staticmethod
     def generate_switch_menu():
-        items = ""
-        for name in SWITCH_ITEMS:
-            items += f"""
-              <item>
-                <attribute name="custom">{name}</attribute>
-              </item>"""
-
-        return f"""{items}"""
+        # Switch items are now hardcoded, no menu items needed
+        return ""
 
     @staticmethod
     def get_switch_item():
-        return SWITCH_ITEMS
+        # return SWITCH_ITEMS
+        return []
 
 
 def basedir():

@@ -40,16 +40,21 @@ class Editor(gtksource.View):
         if style:
             self.buff.set_style_scheme(style)
 
-        self.set_auto_indent(config.get_config("auto_indent"))
+        # self.set_auto_indent(config.get_config("auto_indent"))
+        self.set_auto_indent(False)
         self.set_insert_spaces_instead_of_tabs(True)
         self.set_tab_width(4)
 
-        self.set_wrap_mode(
-            gtk.WrapMode.WORD_CHAR if config.get_config(
-                "wrap_mode") else gtk.WrapMode.NONE)
-        self.set_show_line_numbers(config.get_config("line_number"))
-        self.set_show_right_margin(config.get_config("right_margin"))
-        self.set_show_line_marks(config.get_config("line_mark"))
+        # self.set_wrap_mode(
+        #     gtk.WrapMode.WORD_CHAR if config.get_config(
+        #         "wrap_mode") else gtk.WrapMode.NONE)
+        self.set_wrap_mode(gtk.WrapMode.WORD_CHAR)  # wrap_mode: True
+        # self.set_show_line_numbers(config.get_config("line_number"))
+        self.set_show_line_numbers(False)  # line_number: False
+        # self.set_show_right_margin(config.get_config("right_margin"))
+        self.set_show_right_margin(True)  # right_margin: True
+        # self.set_show_line_marks(config.get_config("line_mark"))
+        self.set_show_line_marks(True)  # line_mark: True
         self.set_highlight_current_line(True)
         self.set_smart_home_end(gtksource.SmartHomeEndType.BEFORE)
         self.set_focusable(True)

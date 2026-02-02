@@ -16,18 +16,21 @@
 # with Jollpi. if not, see <https://www.gnu.org/licenses/>.
 
 
-SWITCH_ITEMS = [
-    "wrap_mode",
-    "auto_indent",
-    "line_number",
-    "line_mark",
-    "right_margin"
-]
+# SWITCH_ITEMS = [
+#     "wrap_mode",
+#     "auto_indent",
+#     "line_number",
+#     "line_mark",
+#     "right_margin"
+# ]
 
-SWITCH_DEFAULTS = {
-    key: True
-    for key in SWITCH_ITEMS
-}
+# SWITCH_DEFAULTS = {
+#     "wrap_mode": True,
+#     "auto_indent": False,
+#     "line_number": False,
+#     "line_mark": True,
+#     "right_margin": True
+# }
 
 DEFAULT_SHORTCUTS = {
     "save": "<Control>s",
@@ -43,7 +46,6 @@ DEFAULT_SHORTCUTS = {
 }
 
 DEFAULT_CONFIG = {
-    **SWITCH_DEFAULTS,
     "filepath": "~/jellypie.todo",
     "scheme": "cobalt",
     "font_family": "Noto Sans Mono",

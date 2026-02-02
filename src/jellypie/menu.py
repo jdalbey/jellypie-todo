@@ -411,53 +411,55 @@ class Menu():
         popover.set_offset(50, 0)
         return popover
 
-    def create_switch(self, custom_ids, callback=None):
-        switches = {}
-        for cid in custom_ids:
-            box = gtk.Box(orientation=gtk.Orientation.HORIZONTAL, spacing=6)
-            box.set_hexpand(True)
-            box.set_margin_start(12)
-            box.set_margin_end(12)
-            box.set_valign(gtk.Align.CENTER)
+    # View options are now hardcoded and not user-configurable
+    # def create_switch(self, custom_ids, callback=None):
+    #     switches = {}
+    #     for cid in custom_ids:
+    #         box = gtk.Box(orientation=gtk.Orientation.HORIZONTAL, spacing=6)
+    #         box.set_hexpand(True)
+    #         box.set_margin_start(12)
+    #         box.set_margin_end(12)
+    #         box.set_valign(gtk.Align.CENTER)
+    #
+    #         label = gtk.Label(label=f"{cid.replace('_', ' ').title()}")
+    #         label.set_halign(gtk.Align.START)
+    #         label.set_hexpand(True)
+    #
+    #         switch = gtk.Switch()
+    #         switch.set_halign(gtk.Align.END)
+    #         switch.set_active(config.get_config(cid))
+    #
+    #         config.register(switch, cid, mode="switch")
+    #
+    #         if callback:
+    #             switch.connect("state-set", callback, cid)
+    #
+    #         box.append(label)
+    #         box.append(switch)
+    #         switches[cid] = box
+    #
+    #     return switches
 
-            label = gtk.Label(label=f"{cid.replace('_', ' ').title()}")
-            label.set_halign(gtk.Align.START)
-            label.set_hexpand(True)
-
-            switch = gtk.Switch()
-            switch.set_halign(gtk.Align.END)
-            switch.set_active(config.get_config(cid))
-
-            config.register(switch, cid, mode="switch")
-
-            if callback:
-                switch.connect("state-set", callback, cid)
-
-            box.append(label)
-            box.append(switch)
-            switches[cid] = box
-
-        return switches
-
-    def on_toggled(self, switch, state, cid):
-        config.set_config(cid, state)
-        for win in self.app.windows:
-            for editor in win.nb.get_all_editors():
-                match cid:
-                    case "wrap_mode":
-                        wc = gtk.WrapMode.WORD_CHAR
-                        nn = gtk.WrapMode.NONE
-                        editor.set_wrap_mode(wc if state else nn)
-                    case "auto_indent":
-                        editor.set_auto_indent(state)
-                    case "line_number":
-                        editor.set_show_line_numbers(state)
-                    case "right_margin":
-                        editor.set_show_right_margin(state)
-                    case "line_mark":
-                        editor.set_show_line_marks(state)
-
-        config.update_all_widget(cid, state, mode="switch")
+    # View options are now hardcoded and not user-configurable
+    # def on_toggled(self, switch, state, cid):
+    #     config.set_config(cid, state)
+    #     for win in self.app.windows:
+    #         for editor in win.nb.get_all_editors():
+    #             match cid:
+    #                 case "wrap_mode":
+    #                     wc = gtk.WrapMode.WORD_CHAR
+    #                     nn = gtk.WrapMode.NONE
+    #                     editor.set_wrap_mode(wc if state else nn)
+    #                 case "auto_indent":
+    #                     editor.set_auto_indent(state)
+    #                 case "line_number":
+    #                     editor.set_show_line_numbers(state)
+    #                 case "right_margin":
+    #                     editor.set_show_right_margin(state)
+    #                 case "line_mark":
+    #                     editor.set_show_line_marks(state)
+    #
+    #     config.update_all_widget(cid, state, mode="switch")
 
     def create_scheme_radio(self, schemes, default_scheme, callback):
         buttons = []
