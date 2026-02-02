@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.github.jdalbey.jellypie</id>
+
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+
+    <developer id="com.github.jdalbey">
+        <name>John Dalbey</name>
+    </developer>
+
+    <name>JellyPie</name>
+    <summary>Minimalist Single-File Text Editor with Todo List Features</summary>
+
+    <description>
+        <p>
+            JellyPie is a minimalist single-file text editor designed for simplicity and todo list management.
+        </p>
+        <p>
+            Built on GTK4 with a streamlined interface, JellyPie focuses on editing one file at a time with special features for task tracking.
+        </p>
+        <p>Key features:</p>
+        <ul>
+            <li>Single-file focus for distraction-free editing</li>
+            <li>Built-in todo list support with Ctrl+D to mark tasks as done</li>
+            <li>Inline text formatting: **bold**, *italic*, `monospace`</li>
+            <li>Syntax highlighting with customizable color schemes</li>
+            <li>Automatic file change detection and window state persistence</li>
+            <li>Config-based customization of fonts, shortcuts, and behavior</li>
+        </ul>
+    </description>
+
+    <launchable type="desktop-id">com.github.jdalbey.jellypie.desktop</launchable>
+
+    <url type="homepage">https://github.com/jdalbey/jellypie-todo</url>
+    <url type="bugtracker">https://github.com/jdalbey/jellypie-todo/issues</url>
+    <url type="vcs-browser">https://github.com/jdalbey/jellypie-todo</url>
+    <url type="help">https://github.com/jdalbey/jellypie-todo/wiki/UserManual</url>
+
+    <!-- Screenshots can be added later -->
+    <!--
+    <screenshots>
+        <screenshot type="default">
+            <image>https://github.com/jdalbey/jellypie-todo/raw/main/screenshots/main.png</image>
+            <caption>JellyPie editing a todo list</caption>
+        </screenshot>
+    </screenshots>
+    -->
+
+    <branding>
+        <color type="primary" scheme_preference="light">#4d9de0</color>
+        <color type="primary" scheme_preference="dark">#1c5d99</color>
+    </branding>
+
+    <content_rating type="oars-1.1"/>
+
+    <supports>
+        <control>keyboard</control>
+        <control>pointing</control>
+    </supports>
+
+    <releases>
+        <release version="1.0.0" date="2026-02-01">
+            <description>
+                <p>Initial release of JellyPie (forked from Jollpi 3.0.9)</p>
+                <ul>
+                    <li>Minimalist single-file editing mode</li>
+                    <li>Todo list support with Ctrl+D mark-as-done feature</li>
+                    <li>Inline text formatting (**bold**, *italic*, `monospace`)</li>
+                    <li>Config-file based customization</li>
+                    <li>Save-and-exit option in quit dialog</li>
+                </ul>
+            </description>
+        </release>
+    </releases>
+</component>

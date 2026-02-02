@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jellypie"
+version = "3.0.9"
+description = "A lightweight, minimalist, todo-focused text editor"
+readme = "README.md"
+authors = [{name = "John Dalbey", email = "jdalbey@users.noreply.github.com"}]
+license = {text = "GPL"}
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU Public License v3 or later (GPLv3+)",
+    "Operating System :: POSIX :: Linux",
+    "Environment :: X11 Applications :: GTK",
+    "Topic :: Text Editors",
+]
+
+[project.urls]
+Homepage = "https://github.com/jdalbey/jellypie-todo"
+Repository = "https://github.com/jdalbey/jellypie-todo"
+Documentation = "https://github.com/jdalbey/jellypie-todo/wiki/UserManual"
+
+[project.gui-scripts]
+jellypie = "jellypie.main:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+jellypie = [
+    "custom.css",
+    "style/jellypie.xml",
+]
+
+[tool.setuptools.data-files]
+"share/applications" = [
+    "data/com.github.jdalbey.jellypie.desktop"
+]
+
+"share/metainfo" = [
+    "data/com.github.jdalbey.jellypie.metainfo.xml"
+    ]
+
+"share/icons/hicolor/16x16/apps" = [
+    "data/icons/hicolor/16x16/apps/com.github.jdalbey.jellypie.png"
+]
+
+"share/icons/hicolor/32x32/apps" = [
+    "data/icons/hicolor/32x32/apps/com.github.jdalbey.jellypie.png"
+]
+
+"share/icons/hicolor/64x64/apps" = [
+    "data/icons/hicolor/64x64/apps/com.github.jdalbey.jellypie.png"
+]
+
+"share/icons/hicolor/128x128/apps" = [
+    "data/icons/hicolor/128x128/apps/com.github.jdalbey.jellypie.png"
+]
+
+"share/icons/hicolor/256x256/apps" = [
+    "data/icons/hicolor/256x256/apps/com.github.jdalbey.jellypie.png"
+]
+
+"share/gtksourceview-5/styles" = [
+    "src/jellypie/style/jellypie.xml"
+]

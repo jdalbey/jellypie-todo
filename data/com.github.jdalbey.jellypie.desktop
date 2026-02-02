@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=JellyPie
+GenericName=Text Editor
+Comment=A lightweight, simple, and reliable text editor
+
+Categories=Utility;TextEditor;
+Keywords=text;editor;write;notepad;todo;
+Exec=jellypie %U
+Icon=com.github.jdalbey.jellypie
+Terminal=false
+StartupNotify=true
+MimeType=text/plain;text/markdown;text/x-python;text/x-c;text/x-shellscript;
+StartupWMClass=com.github.jdalbey.jellypie
