@@ -397,6 +397,11 @@ class Menu():
         self.gtl_revealer = gtl_rev
         self.header = gtk.HeaderBar()
 
+        # Add icon to the left side of the title bar
+        app_icon = gtk.Image.new_from_icon_name(self.app.get_application_id())
+        app_icon.set_icon_size(gtk.IconSize.LARGE)
+        self.header.pack_start(app_icon)
+
         self.add_actions()
 
     def get_tab(self):
