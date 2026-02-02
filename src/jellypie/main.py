@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
 
-# Copyright (c) 2025 Zulfian <zulfian1732@gmail.com>
+# Copyright (c) 2026 John Dalbey
 
-# This file is part of Jollpi.
+# This file is part of Jellypie.
 
-# Jollpi is free software: you can redistribute it and/or modify
+# Jellypie is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-# Jollpi is distributed in the hope that it will be useful,
+# Jellypie is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
 # You should have received a copy of the GNU General Public License along
-# with Jollpi. if not, see <https://www.gnu.org/licenses/>.
+# with Jellypie. if not, see <https://www.gnu.org/licenses/>.
 
+# Jellypie is modifed from the original Jollpi which is Copyright (c) 2025 Zulfian <zulfian1732@gmail.com>
 
 import os
 import sys

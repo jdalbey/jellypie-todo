@@ -1,6 +1,5 @@
 ## User Manual ##
 
-[[project_screenshots]]
 Launching the application opens a simple text area for typing.  The name of the file is shown in the title bar.
 Navigate using standard cursor keys and navigation buttons.
 Enter each todo item on a separate line.
@@ -8,7 +7,7 @@ A scroll bar appears if there are more items than can be displayed in the text a
 <tt>Ctrl-S</tt> saves to a file. The filename is hard coded; since I don't need multiple notes there's only one file and it's in my sync folder where it will sync automatically. 
 <tt>Ctrl-Q</tt> (or the window close button) will quit.
 
-Pressing <tt>F1</tt> will display a very short function summary.
+Pressing <tt>F1</tt> will present a dialog displaying the current font, the location of the config file, and the URL of this user manual.
 
 #### Organizing Items ####
 Place the cursor on an item and press <tt>Alt  \+ ↑</tt> to move it up one line,

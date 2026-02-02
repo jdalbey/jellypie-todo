@@ -1,14 +1,9 @@
 # Jellypie ToDo
 
-
-
-**Jellypie** is a lightweight, minimalist, single-file text editor designed for simplicity and todo list management.   built with **Python 3**, **GTK4**, and **GtkSourceView 5**. 
+**Jellypie** is a lightweight, minimalist, single-file text editor designed for simplicity and todo list management,
+built with **Python 3**, **GTK4**, and **GtkSourceView 5**. 
 
 ---
-
-## 🚀 Version
-**3**     
-For detailed changes, see the [CHANGELOG](CHANGELOG.md).
 
 ![screenshot](screenshot/screenshot1.png)  
 *Jellypie* editor window showing syntax highlighting and completed items.
@@ -17,13 +12,12 @@ For detailed changes, see the [CHANGELOG](CHANGELOG.md).
 
 ## ✨ Features
 
-- Single-file focus for distraction-free editing
+- Single-file focus to simplify workflow
 - Built-in todo list support with Ctrl+D to mark tasks as done
 - Inline text formatting: **bold**, *italic*, `monospace`
 - Syntax highlighting with customizable color schemes
 - Automatic file change detection and window state persistence
 - Config-based customization of fonts, shortcuts, and behavior
-- Real-time file monitoring.
 
 
 ---
@@ -42,7 +36,6 @@ Jellypie requires the following:
 - **GTK 4** (>= 4.10)
 - **GtkSourceView 5**
 - **GObject Introspection**
-- **Evince** (optional, for PDF viewing)
 
 ---
 
@@ -61,6 +54,7 @@ chmod +x install.sh
 
 ---
 
+For detailed changes, see the [CHANGELOG](CHANGELOG.md).
 
 
 ---
