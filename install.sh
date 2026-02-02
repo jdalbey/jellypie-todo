@@ -3,12 +3,15 @@
 # Installer
 # Copyright (c) 2025 Zulfian <zulfian1732@gmail.com>
 # license : GPL v3
-# Rationale: https://gist.github.com/jdalbey/c064ef454e8e118ed53e83a48a5f562f
+# Design Rationale: https://gist.github.com/jdalbey/c064ef454e8e118ed53e83a48a5f562f
 
 set -e
 
 APP_NAME='jellypie'
-PYTHON=$(command -v python3 || command -v python)
+# Prefer /usr/bin/python3 (the distro Python that has python3-gi installed) over
+# whatever python3 appears first in $PATH (like a shim from pyenv). 
+# That way both the dependency checks and the venv will use the correct interpreter.
+PYTHON=$( ([ -x /usr/bin/python3 ] && echo /usr/bin/python3) || command -v python3 || command -v python)
 
 VENV_PATH="/opt/$APP_NAME-venv"
 SYS_PATH="/usr/share"
@@ -24,7 +27,7 @@ log()   { echo -e "${YELLOW}[+] $1${RESET}"; }
 ok()    { echo -e "${GREEN}OK${RESET}"; }
 fail()  { echo -e "${RED}ERROR: $1${RESET}"; exit 1; }
 
-# ===== DETEKSI DISTRO =====
+# ===== DETECT DISTRO =====
 detect_distro() {
     if [[ -f /etc/os-release ]]; then
         . /etc/os-release
@@ -46,7 +49,7 @@ detect_distro() {
 DISTRO=$(detect_distro)
 [[ "$DISTRO" == "unsupported" ]] && fail "Unable to detect distro type. Please install dependencies manually."
 
-# ===== CEK DEPENDENSI =====
+# ===== CHECK DEPENDENCIES =====
 MISSING=()
 
 check_dep() {
@@ -111,7 +114,7 @@ check_all_deps() {
     fi
 }
 
-# ===== INSTALL DEPENDENSI =====
+# ===== INSTALL any missing dependencies =====
 install_missing() {
     case "$DISTRO" in
         debian)
@@ -148,7 +151,23 @@ install_app() {
 
     sudo rm -rf "$VENV_PATH" "$BIN_PATH"
     sudo $PYTHON -m venv --system-site-packages "$VENV_PATH"
+
+    # Fix for Debian/Ubuntu: Ensure venv can access dist-packages
+    PYTHON_VERSION=$("$VENV_PATH/bin/python" -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+    SITE_PACKAGES="$VENV_PATH/lib/python${PYTHON_VERSION}/site-packages"
+    echo "/usr/lib/python3/dist-packages" | sudo tee "$SITE_PACKAGES/dist-packages.pth" >/dev/null
+
     sudo "$VENV_PATH/bin/pip" install --upgrade pip setuptools wheel || true
+
+    # Remove any pip-installed PyGObject packages that conflict with system gi
+    # sudo "$VENV_PATH/bin/pip" uninstall -y PyGObject pygobject pgi 2>/dev/null || true
+    sudo "$VENV_PATH/bin/pip" uninstall -y --no-input pgi 2>/dev/null || true
+
+    # Verify gi module is accessible before proceeding
+    if ! "$VENV_PATH/bin/python" -c "import gi" 2>/dev/null; then
+        fail "Cannot import gi module in venv. System PyGObject may be broken."
+    fi
+
     sudo "$VENV_PATH/bin/pip" install --no-deps . >/dev/null
 
     sudo ln -sf "$VENV_PATH/bin/jellypie" "$BIN_PATH"
