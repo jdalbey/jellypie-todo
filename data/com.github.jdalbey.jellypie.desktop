@@ -2,7 +2,7 @@
 Type=Application
 Name=JellyPie
 GenericName=Text Editor
-Comment=A lightweight, simple, and reliable text editor
+Comment=A lightweight, minimalist, single-file text editor designed for simplicity and to-do list management
 
 Categories=Utility;TextEditor;
 Keywords=text;editor;write;notepad;todo;

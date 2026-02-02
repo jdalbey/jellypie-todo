@@ -1083,7 +1083,7 @@ class Menu():
         from .helper import CONFIG_PATH
 
         config_path = CONFIG_PATH
-        manual_url = "https://github.com/jdalbey/jellypie-todo/wiki/UserManual"
+        manual_url = "https://github.com/jdalbey/jellypie-todo/blob/main/USERMANUAL.md"
 
         dialog = gtk.Window()
         dialog.set_name("window")
@@ -1205,9 +1205,9 @@ class Menu():
         dialog.set_comments(
             "A lightweight, simple, and reliable text editor\n"
             "Built with Python 3, GTK4, and GtkSourceView 5")
-        dialog.set_website("https://github.com/jdalbey/jellypie-todo/wiki/UserManual")
+        dialog.set_website("https://github.com/jdalbey/jellypie-todo/")
         dialog.set_website_label("Manual")
-        dialog.set_copyright("© 2010-2025 Zulfian")
+        #dialog.set_copyright("© 2010-2025 Zulfian")
         dialog.set_license(LICENSE)
 
         dialog.set_authors([

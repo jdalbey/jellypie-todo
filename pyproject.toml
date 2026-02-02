@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "jellypie"
-version = "3.0.9"
+version = "0.1"
 description = "A lightweight, minimalist, todo-focused text editor"
 readme = "README.md"
-authors = [{name = "John Dalbey", email = "jdalbey@users.noreply.github.com"}]
+authors = [{name = "John Dalbey"}]
 license = {text = "GPL"}
 requires-python = ">=3.10"
 classifiers = [
@@ -21,7 +21,7 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/jdalbey/jellypie-todo"
 Repository = "https://github.com/jdalbey/jellypie-todo"
-Documentation = "https://github.com/jdalbey/jellypie-todo/wiki/UserManual"
+Documentation = "https://github.com/jdalbey/jellypie-todo/blob/main/USERMANUAL.md"
 
 [project.gui-scripts]
 jellypie = "jellypie.main:main"
