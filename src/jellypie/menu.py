@@ -397,10 +397,16 @@ class Menu():
         self.gtl_revealer = gtl_rev
         self.header = gtk.HeaderBar()
 
-        # Add icon to the left side of the title bar
+        # Add clickable icon to the left side of the title bar
         app_icon = gtk.Image.new_from_icon_name(self.app.get_application_id())
         app_icon.set_icon_size(gtk.IconSize.LARGE)
-        self.header.pack_start(app_icon)
+
+        icon_button = gtk.Button()
+        icon_button.set_child(app_icon)
+        icon_button.set_has_frame(False)  # Makes it look like just an icon, not a button
+        icon_button.connect("clicked", lambda btn: self.on_quick_help(None, None))
+
+        self.header.pack_start(icon_button)
 
         self.add_actions()
 
