@@ -35,7 +35,7 @@ class Editor(gtksource.View):
         self.buff = gtksource.Buffer()
         self.set_buffer(self.buff)
 
-        scheme_manager = gtksource.StyleSchemeManager()
+        scheme_manager = gtksource.StyleSchemeManager.get_default()
         style = scheme_manager.get_scheme(config.get_config("scheme"))
         if style:
             self.buff.set_style_scheme(style)

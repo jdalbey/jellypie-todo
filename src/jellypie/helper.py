@@ -54,7 +54,7 @@ CUSTOM_CSS = "custom.css"
 class StyleScheme:
     @staticmethod
     def get_style_scheme_dict():
-        manager = gtksource.StyleSchemeManager()
+        manager = gtksource.StyleSchemeManager.get_default()
         schemes = manager.get_scheme_ids()
 
         ordered = []
@@ -89,24 +89,6 @@ class SwitchMenu:
 
 def basedir():
     return os.path.dirname(__file__)
-
-
-def get_style_source(style_name=None):
-    if style_name is None:
-        style_name = f"{APP_NAME}.xml"
-
-    dev_path = os.path.join(basedir(), "style", style_name)
-    if os.path.exists(dev_path):
-        return os.path.abspath(dev_path)
-
-    sys_path = os.path.join("/usr/share/gtksourceview-5/styles", style_name)
-    if os.path.exists(sys_path):
-        return sys_path
-
-    user_path = os.path.join(
-        os.path.expanduser("~/.local/share/gtksourceview-5/styles"), style_name
-    )
-    return user_path
 
 
 def get_icon_dir():

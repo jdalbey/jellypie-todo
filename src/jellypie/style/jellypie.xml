@@ -64,12 +64,13 @@
   <color name="white"                       value="#ffffff"/>
   <color name="black"                       value="#000000"/>
   <color name="green1"                      value="#408740"/>
+  <color name="beige"                      value="#F5F5DC"/>
 
   <color name="aluminium4-3-blend"          value="#a1a49e"/>
   <color name="aluminium6-5-blend"          value="#34393A"/>
 
   <!-- Global Settings -->
-  <style name="text"                        foreground="aluminium2" background="aluminium6"/>
+  <style name="text"                        foreground="white" background="#2b2b2b"/>
   <style name="selection"                   background="butter1"/>
   <style name="cursor"                      foreground="aluminium2"/>
   <style name="secondary-cursor"            foreground="aluminium4-3-blend"/>
@@ -112,7 +113,7 @@
   <!-- Markup -->
   <style name="def:emphasis"                foreground="#ba68c8" italic="true"/>
   <style name="def:strong-emphasis"         foreground="#FF4500" bold="true"/>
-  <style name="def:inline-code"             foreground="#00FF7F"/>
+  <style name="def:inline-code"             foreground="#00FF7F" font="monospace"/>
   <style name="def:insertion"               underline="single"/>
   <style name="def:deletion"                strikethrough="true"/>
   <style name="def:link-text"               foreground="aluminium4"/>

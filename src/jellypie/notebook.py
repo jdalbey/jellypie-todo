@@ -138,8 +138,8 @@ class Notebook(gtk.Notebook):
 
         if allow_formatting:
             # Use jellypie-formatted language for syntax highlighting
-            lang_man = gtksource.LanguageManager()
-            jellypie_lang = lang_man.get_default().get_language("jellypie-formatted")
+            lang_man = gtksource.LanguageManager.get_default()
+            jellypie_lang = lang_man.get_language("jellypie-formatted")
             if jellypie_lang:
                 return jellypie_lang
 
@@ -1208,8 +1208,8 @@ class Notebook(gtk.Notebook):
             "standard::*", gio.FileQueryInfoFlags.NONE, None)
         mime_type = info.get_content_type()
 
-        lang_man = gtksource.LanguageManager()
-        lang = lang_man.get_default().guess_language(filename, mime_type)
+        lang_man = gtksource.LanguageManager.get_default()
+        lang = lang_man.guess_language(filename, mime_type)
 
         buff = editor.get_buffer()
         buff.set_language(self.get_language_for_buffer(lang, mime_type))

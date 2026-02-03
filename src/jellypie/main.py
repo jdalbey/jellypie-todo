@@ -21,10 +21,9 @@
 
 import os
 import sys
-import shutil
 from . import window
 from .helper import (
-    gtk, gio, glib, gdk, get_style_source, get_icon_dir, basedir
+    gtk, gio, glib, gdk, gtksource, get_icon_dir, basedir
 )
 
 
@@ -66,19 +65,52 @@ class Application(gtk.Application):
         settings = gtk.Settings.get_default()
         settings.set_property("gtk-application-prefer-dark-theme", True)
 
-        dev_mode = os.path.exists(
-            os.path.join(basedir(), "style", "jellypie.xml"))
+        # Configure search paths for development
+        # Problem: GtkSourceView checks if directory exists, not if specific files exist
+        # So if user dir exists (even empty), it won't check repo dir
+        # Solution: Only include user dir in search path if user actually has the files
+        repo_style_dir = os.path.join(basedir(), "style")
+        if os.path.exists(repo_style_dir):
+            scheme_manager = gtksource.StyleSchemeManager.get_default()
+            lang_manager = gtksource.LanguageManager.get_default()
 
-        if dev_mode:
-            try:
-                user_style_dir = os.path.expanduser(
-                    "~/.local/share/gtksourceview-5/styles")
-                os.makedirs(user_style_dir, exist_ok=True)
-                style_target = os.path.join(user_style_dir, "jellypie.xml")
-                style_source = get_style_source()
-                shutil.copy(style_source, style_target)
-            except Exception:
-                pass
+            # Get default search paths
+            current_scheme_paths = scheme_manager.get_search_path()
+            current_lang_paths = lang_manager.get_search_path()
+
+            # Check if user has customized the jellypie style file
+            user_style_dir = os.path.expanduser("~/.local/share/gtksourceview-5/styles")
+            user_has_style = os.path.exists(os.path.join(user_style_dir, "jellypie.xml"))
+
+            # Check if user has customized the language file
+            user_lang_dir = os.path.expanduser("~/.local/share/gtksourceview-5/language-specs")
+            user_has_lang = os.path.exists(os.path.join(user_lang_dir, "jellypie-formatted.lang"))
+
+            # Build style scheme search path
+            new_scheme_paths = []
+            if user_has_style:
+                # User has customization, respect it
+                new_scheme_paths.append(user_style_dir)
+            # Add repo directory for development
+            new_scheme_paths.append(repo_style_dir)
+            # Add system directories
+            for path in current_scheme_paths:
+                if path not in new_scheme_paths:
+                    new_scheme_paths.append(path)
+            scheme_manager.set_search_path(new_scheme_paths)
+
+            # Build language specs search path
+            new_lang_paths = []
+            if user_has_lang:
+                # User has customization, respect it
+                new_lang_paths.append(user_lang_dir)
+            # Add repo directory for development
+            new_lang_paths.append(repo_style_dir)
+            # Add system directories
+            for path in current_lang_paths:
+                if path not in new_lang_paths:
+                    new_lang_paths.append(path)
+            lang_manager.set_search_path(new_lang_paths)
 
         icon_source = get_icon_dir()
         icon_theme = gtk.IconTheme.get_for_display(gdk.Display.get_default())

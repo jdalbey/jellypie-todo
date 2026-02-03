@@ -47,7 +47,7 @@ DEFAULT_SHORTCUTS = {
 
 DEFAULT_CONFIG = {
     "filepath": "~/jellypie.todo",
-    "scheme": "cobalt",
+    "scheme": "jellypie",
     "font_family": "Noto Sans Mono",
     "font_size": 14,
     "font_weight": 400,

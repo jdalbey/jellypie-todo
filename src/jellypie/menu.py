@@ -498,7 +498,7 @@ class Menu():
             for win in self.app.windows:
                 for editor in win.nb.get_all_editors():
                     buff = editor.get_buffer()
-                    sch_obj = gtksource.StyleSchemeManager()
+                    sch_obj = gtksource.StyleSchemeManager.get_default()
                     style = sch_obj.get_scheme(scheme_name)
                     buff.set_style_scheme(style)
 
@@ -626,9 +626,8 @@ class Menu():
             except glib.Error:
                 mime_type = "text/plain"
 
-            lang_man = gtksource.LanguageManager()
-            lang = lang_man.get_default().guess_language(
-                filename, mime_type)
+            lang_man = gtksource.LanguageManager.get_default()
+            lang = lang_man.guess_language(filename, mime_type)
             is_text = True
 
             if not lang and not mime_type.startswith("text"):
