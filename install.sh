@@ -172,10 +172,11 @@ install_app() {
 
     sudo ln -sf "$VENV_PATH/bin/jellypie" "$BIN_PATH"
 
-    sudo mkdir -p "$SYS_PATH/applications" "$SYS_PATH/icons/hicolor" "$SYS_PATH/gtksourceview-5/styles"
+    sudo mkdir -p "$SYS_PATH/applications" "$SYS_PATH/icons/hicolor" "$SYS_PATH/gtksourceview-5/styles" "$SYS_PATH/gtksourceview-5/language-specs"
     sudo cp data/com.github.jdalbey.jellypie.desktop "$SYS_PATH/applications/"
     sudo cp -r data/icons/hicolor/* "$SYS_PATH/icons/hicolor/"
     sudo cp src/jellypie/style/jellypie.xml "$SYS_PATH/gtksourceview-5/styles/"
+    sudo cp src/jellypie/style/jellypie-formatted.lang "$SYS_PATH/gtksourceview-5/language-specs/"
 
     sudo chmod 644 "$SYS_PATH/applications/com.github.jdalbey.jellypie.desktop"
     sudo update-desktop-database "$SYS_PATH/applications"
@@ -192,6 +193,7 @@ uninstall() {
     sudo rm -f "$SYS_PATH/applications/com.github.jdalbey.jellypie.desktop"
     sudo rm -f $SYS_PATH/icons/hicolor/*/apps/com.github.jdalbey.jellypie.png
     sudo rm -f "$SYS_PATH/gtksourceview-5/styles/jellypie.xml"
+    sudo rm -f "$SYS_PATH/gtksourceview-5/language-specs/jellypie-formatted.lang"
     log "$APP_NAME successfully uninstalled!"
     }
 

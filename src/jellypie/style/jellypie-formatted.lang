@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  JellyPie Formatted Text Language Definition
+  Provides basic inline formatting: bold, italic, and monospace
+-->
+<language id="jellypie-formatted" name="JellyPie Formatted Text" version="2.0" _section="Markup">
+  <metadata>
+    <property name="globs">*.txt</property>
+    <property name="line-comment-start">#</property>
+  </metadata>
+
+  <styles>
+    <style id="bold" name="Bold Text" map-to="def:strong-emphasis"/>
+    <style id="italic" name="Italic Text" map-to="def:emphasis"/>
+    <style id="monospace" name="Monospace Text" map-to="def:inline-code"/>
+  </styles>
+
+  <definitions>
+    <context id="jellypie-formatted">
+      <include>
+
+        <!-- Bold: **text** -->
+        <context id="bold" style-ref="bold">
+          <match>\*\*[^*\n]+\*\*</match>
+        </context>
+
+        <!-- Italic: *text* (but not **) -->
+        <context id="italic" style-ref="italic">
+          <match>(?&lt;!\*)\*[^*\n]+\*(?!\*)</match>
+        </context>
+
+        <!-- Monospace: `text` -->
+        <context id="monospace" style-ref="monospace">
+          <match>`[^`\n]+`</match>
+        </context>
+
+      </include>
+    </context>
+  </definitions>
+</language>
