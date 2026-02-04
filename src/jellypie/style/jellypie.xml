@@ -70,7 +70,7 @@
   <color name="aluminium6-5-blend"          value="#34393A"/>
 
   <!-- Global Settings -->
-  <style name="text"                        foreground="white" background="#2b2b2b"/>
+  <style name="text"                        foreground="beige" background="#2b2b2b"/>
   <style name="selection"                   background="butter1"/>
   <style name="cursor"                      foreground="aluminium2"/>
   <style name="secondary-cursor"            foreground="aluminium4-3-blend"/>
@@ -113,7 +113,7 @@
   <!-- Markup -->
   <style name="def:emphasis"                foreground="#ba68c8" italic="true"/>
   <style name="def:strong-emphasis"         foreground="#FF4500" bold="true"/>
-  <style name="def:inline-code"             foreground="#00FF7F" font="monospace"/>
+  <style name="def:inline-code"             foreground="#00FF7F"/>
   <style name="def:insertion"               underline="single"/>
   <style name="def:deletion"                strikethrough="true"/>
   <style name="def:link-text"               foreground="aluminium4"/>
